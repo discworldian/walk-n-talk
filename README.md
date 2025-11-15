@@ -25,26 +25,8 @@ Slack app to pair up colleagues for weekly walk 'n talks. In order to run the ap
 * Click on **Save Changes**
 
 ## Local testing setup
+The local testing setup uses Docker Desktop to run the application.
 
-### Without docker
-* [Install Python](https://www.python.org/downloads/) on your testing device.
-* Install the Slack prerequisites with ```python -m pip install slack-bolt slack-sdk```.
-
-### Optional - add pip to path
-To ensure you can simply run ```pip``` rather than type ```python -m pip```, you can add the Python directory to your PATH. 
-*  Open a terminal
-* Type ```sysdm.cpl```
-* Go to **Advanced** > **Environment Variables**
-* Under **User variables**, select **Path**
-* Click **Edit**
-* Click **New**
-* Add the path where Python is installed, e.g. ```C:\Users\<YOUR USERNAME>\AppData\Local\Python\pythoncore-3.14-64\Scripts```
-* Click on **OK** > **OK** > **OK**
-* Restart PowerShell (and VSCode if you're running these commands from a terminal in VSCode)
-
-You can test that this change was successful with ```pip --version```. 
-
-### With docker
 * Download [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 * Run the installer
 
