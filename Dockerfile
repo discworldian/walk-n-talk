@@ -17,8 +17,8 @@ COPY app.py .
 COPY storage.py .
 RUN mkdir -p /app/data && chown -R svcuser:svcuser /app/data
 
+COPY post_weekly.py .
+
 USER svcuser
-
-
 
 CMD ["python", "app.py"]

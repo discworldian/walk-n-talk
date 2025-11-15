@@ -12,22 +12,35 @@ def init_db():
     os.makedirs(DATA_DIR, exist_ok=True)
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, "w") as f:
-            json.dump({"signups": []}, f)
+            json.dump({"signups": [], "active_message": None}, f)
 
 
 def _load():
     if not os.path.exists(DATA_FILE):
-        return {"signups": []}
+        return {"signups": [], "active_message": None}
     with open(DATA_FILE, "r") as f:
         try:
             return json.load(f)
-        except json.JSONDecodeError:
-            return {"signups": []}
+        except:
+            return {"signups": [], "active_message": None}
 
 
 def _save(data):
     with open(DATA_FILE, "w") as f:
         json.dump(data, f)
+
+
+def set_active_message(message_ts):
+    """Store the Slack message timestamp for the weekly post."""
+    with _lock:
+        data = _load()
+        data["active_message"] = message_ts
+        data["signups"] = []   # reset for the new week
+        _save(data)
+
+
+def get_active_message():
+    return _load().get("active_message")
 
 
 def add_signup(user_id):
@@ -46,4 +59,6 @@ def get_signups():
 
 def clear_signups():
     with _lock:
-        _save({"signups": []})
+        data = _load()
+        data["signups"] = []
+        _save(data)
