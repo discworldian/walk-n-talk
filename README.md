@@ -4,6 +4,8 @@ Slack app to pair up colleagues for weekly walk 'n talks. In order to run the ap
 ## Create the Slack app
 ### Create app
 * Go to https://api.slack.com/ and select **Create App**. 
+* Give the app a sensible name, e.g. "Walk and Talk"
+* Add an icon image
 ### Turn on socket mode
 * On the left-hand side, under **Socket Mode**, enable **Socket mode** and store the app token in a secure location, such as a password manager, and/or within repository secrets. This will be referred to as the ```SLACK_APP_TOKEN```.
 ### Add permissions
@@ -46,7 +48,20 @@ You can test that this change was successful with ```pip --version```.
 * Download [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 * Run the installer
 
+> [!INFO]
+> Running Docker in Windows requires WSL 2 to be installed, and virtualisation needs to be enabled in the BIOS. 
+
 Verify docker is working: 
-* Open a PowerShell terminal
+* Open a terminal
 * Run ```docker --version```
 
+If this all works correctly, the next step is to get the app running in Docker.
+
+Run the app using ```docker compose up
+
+# Set up a channel and invite the app
+* Create the channel where you want the bot to run
+* Type ```/apps```
+* Search for the app by name
+
+The app will now start listening in the channel.
