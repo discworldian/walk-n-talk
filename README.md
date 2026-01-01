@@ -39,11 +39,14 @@ Verify docker is working:
 
 If this all works correctly, the next step is to get the app running in Docker.
 
-Run the app using ```docker compose up
+Run the app using ```docker compose up```.
 
 # Set up a channel and invite the app
 * Create the channel where you want the bot to run
 * Type ```/apps```
 * Search for the app by name
 
-The app will now start listening in the channel.
+The app will now start listening in the channel. You will need the ID of the channel for the environment variable WALK_CHANNEL. 
+
+## Tests
+* ```docker compose run --rm walkntalk-bot python post_weekly.py``` will run the weekly post message.
